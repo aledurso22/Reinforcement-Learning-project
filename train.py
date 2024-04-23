@@ -9,6 +9,15 @@ import matplotlib.pyplot as plt
 from actor import Actor
 from critic import Critic
 
+prova = np.linspace(1,100)
+
+plt.plot(prova)
+plt.xlabel("steps")
+plt.ylabel("Loss")
+plt.title("Actor loss")
+plt.savefig('figures/prova.png')
+plt.close()
+
 
 def evaluate_performance(actor, critic, total_steps):
     env = gym.make("CartPole-v1")
@@ -33,7 +42,7 @@ def evaluate_performance(actor, critic, total_steps):
     print("episodic return of the 20000:", np.mean(episodic_rewards_10))
     plt.plot(v_values)
     plt.title("V values")
-    plt.savefig(f'\\figures\v_values_{total_steps}.png')
+    plt.savefig(f'figures/v_values_{total_steps}.png')
     plt.close()
 
 
@@ -120,13 +129,13 @@ plt.plot(actor_losses)
 plt.xlabel("steps")
 plt.ylabel("Loss")
 plt.title("Actor loss")
-plt.savefig('\\figures\actor_loss.png')
+plt.savefig('figures/actor_loss.png')
 plt.close()
 #critic loss throughout the training
 plt.plot(critic_losses)
 plt.xlabel("steps")
 plt.title("Criticloss")
-plt.savefig('\\figures\critic_loss.png')
+plt.savefig('figures/critic_loss.png')
 plt.close()
 
 ##########################LOG######################
@@ -135,13 +144,13 @@ plt.plot(actor_losses)
 plt.xlabel("steps")
 plt.ylabel("Loss")
 plt.title("Actor loss")
-plt.savefig('\\figures\actor_loss.png')
+plt.savefig('figures/actor_loss.png')
 plt.close()
 #critic loss throughout the training
 plt.plot(critic_losses)
 plt.xlabel("steps")
 plt.title("Criticloss")
-plt.savefig('\\figures\critic_loss.png')
+plt.savefig('figures/critic_loss.png')
 plt.close()
 
                 
