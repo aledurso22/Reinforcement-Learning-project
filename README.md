@@ -1,1 +1,1 @@
-# reinforcement_learning_project
+# Reinforcement Learning project
