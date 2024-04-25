@@ -9,14 +9,6 @@ import matplotlib.pyplot as plt
 from actor import Actor
 from critic import Critic
 
-prova = np.linspace(1,100)
-
-plt.plot(prova)
-plt.xlabel("steps")
-plt.ylabel("Loss")
-plt.title("Actor loss")
-plt.savefig('figures/prova.png')
-plt.close()
 
 
 def evaluate_performance(actor, critic, total_steps):
@@ -89,7 +81,7 @@ while total_steps < max_steps:
         total_reward += reward
         state = next_state
 
-        critic_loss = advantage.pow(2).mean()
+        critic_loss = advantage.pow(2).sum()
         adam_critic.zero_grad()
         critic_loss.backward()
         adam_critic.step()
@@ -102,7 +94,7 @@ while total_steps < max_steps:
         actor_losses.append(actor_loss.detach().data.numpy())
         critic_losses.append(critic_loss.detach().data.numpy())
         
-        done = terminated or truncated    
+        done = terminated    
 
         if (total_steps % 1000) == 0:
             print("current episodic return:", np.log(total_reward))
@@ -143,6 +135,7 @@ plt.close()
 plt.plot(actor_losses)
 plt.xlabel("steps")
 plt.ylabel("Loss")
+plt.yscale("log")
 plt.title("Actor loss")
 plt.savefig('figures/actor_loss.png')
 plt.close()
